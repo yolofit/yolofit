@@ -6,19 +6,39 @@
     <entry>
       <title><![CDATA[搭建hexo,并且部署到coding,github上]]></title>
       <url>http://yolofit.coding.me/2016/06/30/%E6%90%AD%E5%BB%BAhexo-%E5%B9%B6%E4%B8%94%E9%83%A8%E7%BD%B2%E5%88%B0coding-github%E4%B8%8A/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><h3 id="安装node和淘宝cnpm指令"><a href="#安装node和淘宝cnpm指令" class="headerlink" title="安装node和淘宝cnpm指令"></a>安装node和淘宝cnpm指令</h3><ol>
+<li><a href="https://nodejs.org/e
+n/" target="_blank" rel="external">nodejs下载地址</a></li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="external">git安装</a></li>
+<li><p>cnpm代替npm.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://npm.taobao.org/" target="_blank" rel="external">淘宝npm镜像</a> ps:淘宝镜像可装可不装,不过就国内环境,建议安装拉.装了之后,以后装node包就用cnpm指令.</p>
+</li>
+</ol>
+<h3 id="全局安装hexo-hexo-cli模块"><a href="#全局安装hexo-hexo-cli模块" class="headerlink" title="全局安装hexo,hexo-cli模块"></a>全局安装hexo,hexo-cli模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo -g</span><br><span class="line">cnpm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h3 id="检查是否都成功安装"><a href="#检查是否都成功安装" class="headerlink" title="检查是否都成功安装"></a>检查是否都成功安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">cnpm -v</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<p>若正常显示其版本号即表示成功安装了.<br>ps:git可以在桌面右键,看菜单是否有 “Git Bash Here” 这项.</p>
+<h2 id="搭建并且初始化"><a href="#搭建并且初始化" class="headerlink" title="搭建并且初始化"></a>搭建并且初始化</h2><p>开发环境准备好了,为了顺顺利利部署hexo blog,建议安装我这流程走.<br>我的blog源码是托管coding的分支hexo上,静态文件就放到coding,github的master分支上.</p>
+<h3 id="到coding-github上创建仓库"><a href="#到coding-github上创建仓库" class="headerlink" title="到coding,github上创建仓库"></a>到coding,github上创建仓库</h3><p>ps:以下都是以coding创建为主,github流程也一样<br><strong>仓库名称和你的用户名要一样,仓库名称和你的用户名要一样,仓库名称和你的用户名要一样.</strong><br>重要的事情要多说几次,  名称和用户名一样的话,后面就可以用<a href="http://yolofit.coding.me/直接访问了">http://yolofit.coding.me/直接访问了</a>.<br><a href="http://yolofit.coding.me">http://yolofit.coding.me</a> 等价于 <a href="http://yolofit.coding.me/yolofit">http://yolofit.coding.me/yolofit</a>, 若是不一样的话,你就无法直接用<a href="http://yolofit.coding.me">http://yolofit.coding.me</a>了,因为你需要访问<a href="http://yolofit.coding.me/仓库名">http://yolofit.coding.me/仓库名</a> </p>
+<h3 id="因为我的源文件是打算放到coding上-所以创建仓库之后-把仓库给克隆下来"><a href="#因为我的源文件是打算放到coding上-所以创建仓库之后-把仓库给克隆下来" class="headerlink" title="因为我的源文件是打算放到coding上,所以创建仓库之后,把仓库给克隆下来."></a>因为我的源文件是打算放到coding上,所以创建仓库之后,把仓库给克隆下来.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://git.coding.net/uername/uername.git</span><br></pre></td></tr></table></figure>
+<p>ps:建议把ssh key公钥也配置一下,<a href="2016/06/28/配置github-coding-的ssh遇到问题总结/">可参考这个链接</a></p>
+<h3 id="仓库克隆下来之后-就是初始化demo了"><a href="#仓库克隆下来之后-就是初始化demo了" class="headerlink" title="仓库克隆下来之后,就是初始化demo了"></a>仓库克隆下来之后,就是初始化demo了</h3><p>依次执行以下指令</p>
+<p>###<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init        <span class="comment">#初始化hexo</span></span><br><span class="line">cnpm install     <span class="comment">#安装hexo blog依赖</span></span><br><span class="line">hexo s --debug   <span class="comment">#(hexo server)开启服务器,--debug参数可以去掉,但是每次修改文件就得自己在去执行hexo g一次. </span></span><br><span class="line">hexo g           <span class="comment">#(hexo generate)生成本地静态文件</span></span><br></pre></td></tr></table></figure></p>
+<p>成功之后,浏览器打开<a href="http://127.0.0.1:4000/" target="_blank" rel="external">http://127.0.0.1:4000/</a>可以预览效果了.</p>
+]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[学习markdown语法]]></title>
       <url>http://yolofit.coding.me/2016/06/29/%E5%AD%A6%E4%B9%A0markdown%E8%AF%AD%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="基本用法-边学边用-具体教程如下链接"><a href="#基本用法-边学边用-具体教程如下链接" class="headerlink" title="基本用法,边学边用,具体教程如下链接."></a>基本用法,边学边用,具体教程如下链接.</h1><p><a href="http://wowubuntu.com/markdown/index.html" target="_blank" rel="external">markdown快速入门</a><br><a href="https://github.com/SublimeText-Markdown/MarkdownEditing" target="_blank" rel="external">markdown的sublime text插件</a></p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># #==&gt;&lt;h1&gt;title&lt;/h1&gt;</span><br><span class="line">## ##==&gt;&lt;h2&gt;title&lt;/h2&gt;</span><br><span class="line">### ###==&gt;&lt;h3&gt;title&lt;/h3&gt;</span><br><span class="line">以此类推</span><br></pre></td></tr></table></figure>
-<h2 id="加粗bold-斜体italic"><a href="#加粗bold-斜体italic" class="headerlink" title="加粗bold/斜体italic"></a><strong>加粗bold</strong>/<em>斜体italic</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__bold__ </span><br><span class="line">**bold**</span><br><span class="line"></span><br><span class="line">_italic_</span><br><span class="line">*italic*</span><br></pre></td></tr></table></figure>
-<h2 id="超链接google"><a href="#超链接google" class="headerlink" title="超链接google"></a>超链接<a href="https://google.cn" target="_blank" rel="external">google</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[google](https://google.cn)</span><br></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h2 id="基本用法-边学边用-具体教程如下链接"><a href="#基本用法-边学边用-具体教程如下链接" class="headerlink" title="基本用法,边学边用,具体教程如下链接."></a>基本用法,边学边用,具体教程如下链接.</h2><p><a href="http://wowubuntu.com/markdown/index.html" target="_blank" rel="external">markdown快速入门</a><br><a href="https://github.com/SublimeText-Markdown/MarkdownEditing" target="_blank" rel="external">markdown的sublime text插件</a></p>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># #==&gt;&lt;h1&gt;title&lt;/h1&gt;</span><br><span class="line">## ##==&gt;&lt;h2&gt;title&lt;/h2&gt;</span><br><span class="line">### ###==&gt;&lt;h3&gt;title&lt;/h3&gt;</span><br><span class="line">以此类推</span><br></pre></td></tr></table></figure>
+<h3 id="加粗bold-斜体italic"><a href="#加粗bold-斜体italic" class="headerlink" title="加粗bold/斜体italic"></a><strong>加粗bold</strong>/<em>斜体italic</em></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__bold__ </span><br><span class="line">**bold**</span><br><span class="line"></span><br><span class="line">_italic_</span><br><span class="line">*italic*</span><br></pre></td></tr></table></figure>
+<h3 id="超链接google"><a href="#超链接google" class="headerlink" title="超链接google"></a>超链接<a href="https://google.cn" target="_blank" rel="external">google</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[google](https://google.cn)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片<img src="http://o9h6614yh.bkt.clouddn.com/images/header.jpg" alt="图片Alt text"></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](/img/weibo.png)</span><br></pre></td></tr></table></figure>
-<h2 id="gt-块-blockquote-1-有序列表-ol-无序列表-ul"><a href="#gt-块-blockquote-1-有序列表-ol-无序列表-ul" class="headerlink" title="(&gt;)块(blockquote) / 1.有序列表(ol) / (*-+)无序列表(ul)"></a>(&gt;)块(blockquote) / 1.有序列表(ol) / (*-+)无序列表(ul)</h2><blockquote>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片<img src="http://o9h6614yh.bkt.clouddn.com/images/header.jpg" alt="图片Alt text"></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](/img/weibo.png)</span><br></pre></td></tr></table></figure>
+<h3 id="gt-块-blockquote-1-有序列表-ol-无序列表-ul"><a href="#gt-块-blockquote-1-有序列表-ol-无序列表-ul" class="headerlink" title="(&gt;)块(blockquote) / 1.有序列表(ol) / (*-+)无序列表(ul)"></a>(&gt;)块(blockquote) / 1.有序列表(ol) / (*-+)无序列表(ul)</h3><blockquote>
 <p>有序列表</p>
 <ol>
 <li>这里是2</li>
@@ -33,12 +53,12 @@
 </li>
 </ol>
 </blockquote>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>(```)代码块html(code)</p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>(```)代码块html(code)</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(```)代码块html(code)</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>"1"<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(```)代码块bash(code)</span><br><span class="line">$ hexo new <span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(```)代码块<span class="selector-tag">css</span>(<span class="selector-tag">code</span>)</span><br><span class="line"><span class="selector-class">.class</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><ol>
+<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><ol>
 <li>第一次使用,有点不习惯.</li>
 <li>先学习部分语法,以后在深入.</li>
 <li>标记后面需要加空格</li>
@@ -51,24 +71,24 @@
     <entry>
       <title><![CDATA[配置github coding 的ssh流程与问题总结]]></title>
       <url>http://yolofit.coding.me/2016/06/28/%E9%85%8D%E7%BD%AEgithub-coding-%E7%9A%84ssh%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<h1 id="配置ssh-key"><a href="#配置ssh-key" class="headerlink" title="配置ssh key"></a>配置ssh key</h1><h2 id="生成第一个key"><a href="#生成第一个key" class="headerlink" title="生成第一个key"></a>生成第一个key</h2><ol>
+      <content type="html"><![CDATA[<h2 id="配置ssh-key"><a href="#配置ssh-key" class="headerlink" title="配置ssh key"></a>配置ssh key</h2><h3 id="生成第一个key"><a href="#生成第一个key" class="headerlink" title="生成第一个key"></a>生成第一个key</h3><ol>
 <li>$ ssh-keygen -t rsa -C “helloworld@gmail.com” </li>
 <li>一路回车即可,第一次添加key成功之后会在C:\Users\Administrator下生成.ssh目录</li>
 <li>id_rsa.pub打开,里面一大串东西即是公钥了,后面添加到coding时需要用到.</li>
 </ol>
-<h2 id="生成第二个key"><a href="#生成第二个key" class="headerlink" title="生成第二个key"></a>生成第二个key</h2><ol>
+<h3 id="生成第二个key"><a href="#生成第二个key" class="headerlink" title="生成第二个key"></a>生成第二个key</h3><ol>
 <li>$ ssh-keygen -t rsa -C “helloworld@gmail.com” </li>
 <li>这里要注意下,不可以一路回车了,不然会覆盖前面的生成的.需要给其取个文件名,比如id_rsa_github. 注意:第二次生成的文件会在你当前执行bash窗口所在目录下.比如我在桌面执行bash的,那么会生成到桌面.</li>
 <li>继续回车,然后把bash复制到C:\Users\Administrator.ssh目录<br><img src="/images/keyDir.png" alt="keyDir"></li>
 </ol>
 <a id="more"></a>
-<h2 id="把key配置到github-coding上"><a href="#把key配置到github-coding上" class="headerlink" title="把key配置到github,coding上"></a>把key配置到github,coding上</h2><p><img src="/images/codingKey.png" alt="codingKey"><br><img src="/images/githubKey.png" alt="githubKey"></p>
-<h2 id="配置config"><a href="#配置config" class="headerlink" title="配置config"></a>配置config</h2><ol>
+<h3 id="把key配置到github-coding上"><a href="#把key配置到github-coding上" class="headerlink" title="把key配置到github,coding上"></a>把key配置到github,coding上</h3><p><img src="/images/codingKey.png" alt="codingKey"><br><img src="/images/githubKey.png" alt="githubKey"></p>
+<h3 id="配置config"><a href="#配置config" class="headerlink" title="配置config"></a>配置config</h3><ol>
 <li>在~.ssh目录下新建一个空文件 config (可用指令touch config).</li>
 <li>记事本打开,然后把这代码粘贴进去.<br><a href="https://coding.net/help/faq/git/git.html" target="_blank" rel="external">注意coding写法是不一样的</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># coding</span><br><span class="line">Host git.coding.net</span><br><span class="line">    User yourmail@gmail.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"># github</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_github</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="测试是否配置成功"><a href="#测试是否配置成功" class="headerlink" title="测试是否配置成功"></a>测试是否配置成功</h2><p>$ ssh -T git@git.coding.net<br>Hello username You’ve connected to Coding.net by SSH successfully!</p>
+<h3 id="测试是否配置成功"><a href="#测试是否配置成功" class="headerlink" title="测试是否配置成功"></a>测试是否配置成功</h3><p>$ ssh -T git@git.coding.net<br>Hello username You’ve connected to Coding.net by SSH successfully!</p>
 <p>$ ssh -T git@github.com<br>Hi username! You’ve successfully authenticated, but GitHub does not provide shel<br>l access.</p>
 <p>若出现successfully就表示配置成功了.</p>
 <h1 id="问题与总结"><a href="#问题与总结" class="headerlink" title="问题与总结"></a>问题与总结</h1><ol>
